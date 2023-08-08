@@ -38,9 +38,11 @@ const Header = () => {
 const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  padding: 20px;
+  justify-content: space-between;
+  padding: 20px 120px;
+  box-sizing: border-box;
   width: 100%;
+  border-bottom: 1px solid #ebebeb;
 `;
 
 const HeaderSearch = styled.div`
@@ -75,7 +77,7 @@ const NavSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  width: 300px;
+  width: fit-content;
   margin-top: 10px;
 `;
 
@@ -84,7 +86,6 @@ const NavItem = styled(Link)`
   font-weight: 600;
   text-decoration: none;
   color: #000;
-  font-family: Futura;
   position: relative;
   overflow: hidden;
   & + & {
