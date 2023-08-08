@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main';
+import { createGlobalStyle } from 'styled-components';
 
 function App() {
   return (
     <div className="App">
+      <GlobalStyle />
       <Router>
         <Routes>
           <Route path="/" element={<Main />} />
@@ -15,5 +17,12 @@ function App() {
     </div>
   );
 }
+
+const GlobalStyle = createGlobalStyle`
+	body {
+		padding: 0;
+		margin: 0;
+	}
+`;
 
 export default App;
