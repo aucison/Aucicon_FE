@@ -1,12 +1,12 @@
 import React from 'react';
-import Item from './Item';
-import Header from './Main/Header';
+import ItemList from '../ItemList';
+import Header from '../Main/Header';
 
 const SearchResult = () => {
   return (
     <div>
       <Header />
-      <Item />
+      <ItemList />
     </div>
   );
 };
