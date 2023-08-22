@@ -1,4 +1,4 @@
-import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useState, useRef } from 'react';
 import { styled, css } from 'styled-components';
 
 interface ToggleBtnProps {
@@ -12,6 +12,9 @@ const Sell = () => {
   const [selectedCategory, setSelectedCategory] = useState('일반');
   const [toggle, setToggle] = useState(false);
 
+  const button1Ref = useRef<HTMLButtonElement>(null);
+  const button2Ref = useRef<HTMLButtonElement>(null);
+
   const handleTitleField = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
@@ -24,18 +27,15 @@ const Sell = () => {
     console.log(title);
   };
 
-  // 카테고리 버튼 처리
-  const categoryButtons =
-    document.querySelectorAll<HTMLElement>('.category_btn');
   const onClickButton = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as HTMLElement;
-    setSelectedCategory(target.innerText);
-    target.classList.add('selected');
-    categoryButtons.forEach((btn) => {
-      if (btn.innerText !== target.innerText) {
+    [button1Ref.current, button2Ref.current].forEach((btn) => {
+      if (btn && btn.classList.contains('selected')) {
         btn.classList.remove('selected');
       }
     });
+    setSelectedCategory(target.innerText);
+    target.classList.add('selected');
   };
 
   const clickedToggle = () => {
@@ -68,10 +68,16 @@ const Sell = () => {
           type="button"
           className="category_btn selected"
           onClick={onClickButton}
+          ref={button1Ref}
         >
           일반
         </button>
-        <button type="button" className="category_btn" onClick={onClickButton}>
+        <button
+          type="button"
+          className="category_btn"
+          onClick={onClickButton}
+          ref={button2Ref}
+        >
           핸드메이드
         </button>
       </Category>
@@ -148,7 +154,7 @@ const Wrapper = styled.div`
   align-items: flex-start;
   padding: 40px 240px;
   h1 {
-    font-size: 32px;
+    font-size: 1.8rem;
   }
 `;
 
@@ -166,14 +172,14 @@ const Caution = styled.div`
   line-height: 20px;
   h3 {
     width: 72px;
-    font-size: 16px;
+    font-size: 1rem;
     margin-bottom: 0px;
   }
   ul {
     flex-direction: column;
   }
   li {
-    font-size: 12px;
+    font-size: 0.8rem;
     & + & {
       margin-top: 8px;
     }
@@ -187,6 +193,7 @@ const Index = styled.div`
   h3 {
     width: 100%;
     margin: 0;
+    font-size: 1rem;
   }
   margin-right: 36px;
 `;
@@ -317,4 +324,5 @@ const SubmitButton = styled.button`
   font-size: 16px;
   cursor: pointer;
 `;
+
 export default Sell;
