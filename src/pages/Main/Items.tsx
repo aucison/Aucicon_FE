@@ -5,6 +5,15 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Dummy from '../../Dummy.json';
 
+type Item = {
+  id?: number;
+  img: string;
+  brand: string;
+  name: string;
+  price: number;
+  timelimit: string;
+};
+
 type ClassProps = {
   title: string;
   subtitle: string;
@@ -26,20 +35,23 @@ const Items = ({ title, subtitle }: ClassProps) => {
       </Class>
       <Wrapper>
         <Slider {...settings}>
-          {Dummy.items.map((item) => (
-            <Item key={item.id}>
+          {(Dummy.items as Item[]).map((item) => (
+            <ItemFormat key={item.id}>
               <Img src={item.img}></Img>
               <Brand>{item.brand}</Brand>
               <Name>{item.name}</Name>
               <Price>
                 <Text>최고가액</Text>
-                <Value>{item.price}</Value>
+                {/* Number 포맷팅 */}
+                <Value>{`${new Intl.NumberFormat().format(
+                  item.price,
+                )}원`}</Value>
               </Price>
               <TimeLimit>
                 <Text>남은 시간</Text>
                 <Value>{item.timelimit}</Value>
               </TimeLimit>
-            </Item>
+            </ItemFormat>
           ))}
         </Slider>
       </Wrapper>
@@ -107,7 +119,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Item = styled.div`
+const ItemFormat = styled.div`
   display: flex;
   flex-direction: column;
   width: fit-content !important;

@@ -154,7 +154,7 @@ const Wrapper = styled.div`
   align-items: flex-start;
   padding: 40px 240px;
   h1 {
-    font-size: 1.8rem;
+    font-size: var(--font-large);
   }
 `;
 
@@ -172,14 +172,14 @@ const Caution = styled.div`
   line-height: 20px;
   h3 {
     width: 72px;
-    font-size: 1rem;
+    font-size: var(--font-small);
     margin-bottom: 0px;
   }
   ul {
     flex-direction: column;
   }
   li {
-    font-size: 0.8rem;
+    font-size: var(--font-micro);
     & + & {
       margin-top: 8px;
     }
@@ -193,7 +193,7 @@ const Index = styled.div`
   h3 {
     width: 100%;
     margin: 0;
-    font-size: 1rem;
+    font-size: var(--font-small);
   }
   margin-right: 36px;
 `;
