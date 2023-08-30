@@ -35,19 +35,19 @@ const Slide = styled.div`
   align-items: center;
   h1 {
     margin-bottom: 8px;
-    font-size: 32px;
+    font-size: ${({ theme }) => theme.fontSizes.title};
   }
   h3 {
     margin-top: 8px;
     color: #555;
-    font-size: 16px;
+    font-size: ${({ theme }) => theme.fontSizes.small};
   }
   button {
     color: white;
     background: #000;
     padding: 9px 32px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: ${({ theme }) => theme.fontSizes.small};
     font-weight: 500;
     cursor: pointer;
   }

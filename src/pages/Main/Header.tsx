@@ -49,7 +49,7 @@ const HeaderSearch = styled.div`
   width: 330px;
   height: 40px;
   border-radius: 20px;
-  border: 1px solid #757575;
+  border: ${({ theme }) => theme.borders.grey};
   margin-left: 60px;
   margin-top: 10px;
   padding: 0 10px;
@@ -63,7 +63,7 @@ const HeaderInput = styled.input`
   height: 20px;
   border: none;
   outline: none;
-  font-size: 12px;
+  font-size: ${({ theme }) => theme.fontSizes.micro};
 `;
 
 const PostSection = styled.div`
@@ -82,7 +82,7 @@ const NavSection = styled.div`
 `;
 
 const NavItem = styled(Link)`
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.fontSizes.small};
   font-weight: 600;
   text-decoration: none;
   color: #000;
