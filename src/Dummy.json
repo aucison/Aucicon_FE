@@ -96,5 +96,37 @@
       "price": 53000,
       "timelimit": "07H 32M"
     }
+  ],
+  "Like": [
+    {
+      "id": 1,
+      "img": "https://image.msscdn.net/images/goods_img/20190228/969666/969666_2_500.jpg",
+      "brand": "디스이즈네버댓",
+      "name": "Thisisneverthat x New Era x MLB New York Yankees Unstructured Ball Cap White Black",
+      "summary": "상품 간단 설명",
+      "category": "비경매",
+      "price": 53000,
+      "now_price": 230000
+    },
+    {
+      "id": 1,
+      "img": "https://image.msscdn.net/images/goods_img/20190228/969666/969666_2_500.jpg",
+      "brand": "디스이즈네버댓",
+      "name": "Thisisneverthat x New Era x MLB New York Yankees Unstructured Ball Cap White Black",
+      "summary": "상품 간단 설명",
+      "category": "경매",
+      "price": 53000,
+      "now_price": 230000
+    },
+    {
+      "id": 1,
+      "img": "https://image.msscdn.net/images/goods_img/20190228/969666/969666_2_500.jpg",
+      "brand": "디스이즈네버댓",
+      "name": "Thisisneverthat x New Era x MLB New York Yankees Unstructured Ball Cap White Black",
+      "summary": "상품 간단 설명",
+      "category": "비경매",
+      "price": 53000,
+      "now_price": 230000
+    }
   ]
 }
