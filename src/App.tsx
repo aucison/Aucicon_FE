@@ -8,13 +8,12 @@ import GlobalStyle from './theme/GlobalStyle';
 import { theme } from './theme/theme';
 import Header from './pages/Main/Header';
 import Purchase from './pages/Purchase';
-import { toCSSVariables } from './theme/toCSSVariables';
+import Market from './pages/Market';
 
 function App() {
-  const cssVariables = toCSSVariables(theme);
   return (
     <div className="App">
-      <ThemeProvider theme={cssVariables}>
+      <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Router>
           <Header />
@@ -26,6 +25,7 @@ function App() {
             <Route path="/buy" element={<Purchase />} />
             {/* 추후 경매, 일반 /제품번호에 따른 라우팅 추가 */}
             <Route path="*" element={<div>Not Found</div>} />
+            <Route path="/market" element={<Market />} />
           </Routes>
         </Router>
       </ThemeProvider>

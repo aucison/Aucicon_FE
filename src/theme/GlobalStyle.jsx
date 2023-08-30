@@ -1,6 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-// eslint-disable-next-line no-unused-vars
-import { toCSSVariables } from './theme';
 
 export const GlobalStyle = createGlobalStyle`
   :root {
