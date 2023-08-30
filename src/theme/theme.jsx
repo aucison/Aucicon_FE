@@ -1,5 +1,5 @@
 export const theme = {
-  color: {
+  colors: {
     white: '#ffffff',
     lightWhite: '#eeeeee',
     darkWhite: '#bdbdbd',
@@ -15,7 +15,7 @@ export const theme = {
     orange: '#feb546',
     black: '#000000',
   },
-  font: {
+  fontSizes: {
     title: '1.8rem',
     large: '1.6rem',
     medium: '1.4rem',
@@ -23,15 +23,10 @@ export const theme = {
     small: '1rem',
     micro: '0.8rem',
   },
-  weight: {
-    bold: 700,
-    semiBold: 600,
-    regular: 400,
+  paddings: {
+    desktop: '40px 240px',
   },
-  animation: {
-    duration: '300ms',
-  },
-  size: {
-    borderRadius: '4px',
+  borders: {
+    grey: '1px solid #727272',
   },
 };
