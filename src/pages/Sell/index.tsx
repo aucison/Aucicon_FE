@@ -152,9 +152,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 40px 240px;
+  padding: ${({ theme }) => theme.paddings.desktop};
   h1 {
-    font-size: var(--font-large);
+    font-size: ${({ theme }) => theme.fontSizes.large};
   }
 `;
 
@@ -172,14 +172,14 @@ const Caution = styled.div`
   line-height: 20px;
   h3 {
     width: 72px;
-    font-size: var(--font-small);
+    font-size: ${({ theme }) => theme.fontSizes.small};
     margin-bottom: 0px;
   }
   ul {
     flex-direction: column;
   }
   li {
-    font-size: var(--font-micro);
+    font-size: ${({ theme }) => theme.fontSizes.micro};
     & + & {
       margin-top: 8px;
     }
@@ -193,7 +193,7 @@ const Index = styled.div`
   h3 {
     width: 100%;
     margin: 0;
-    font-size: var(--font-small);
+    font-size: ${({ theme }) => theme.fontSizes.small};
   }
   margin-right: 36px;
 `;
@@ -236,14 +236,14 @@ const BoxFormat = styled.div`
   input {
     width: 600px;
     height: 40px;
-    border: 1px solid #727272;
+    border: ${({ theme }) => theme.borders.grey};
     border-radius: 5px;
     padding: 0 16px;
   }
   textarea {
     width: 600px;
     height: 200px;
-    border: 1px solid #727272;
+    border: ${({ theme }) => theme.borders.grey};
     border-radius: 5px;
     padding: 16px;
     resize: none;
