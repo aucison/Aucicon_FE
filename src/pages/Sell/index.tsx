@@ -172,14 +172,14 @@ const Caution = styled.div`
   line-height: 20px;
   h3 {
     width: 72px;
-    font-size: ${({ theme }) => theme.fontSizes.small};
+    font-size: ${({ theme }) => theme.fontSizes.s};
     margin-bottom: 0px;
   }
   ul {
     flex-direction: column;
   }
   li {
-    font-size: ${({ theme }) => theme.fontSizes.micro};
+    font-size: ${({ theme }) => theme.fontSizes.xs};
     & + & {
       margin-top: 8px;
     }
@@ -193,7 +193,7 @@ const Index = styled.div`
   h3 {
     width: 100%;
     margin: 0;
-    font-size: ${({ theme }) => theme.fontSizes.small};
+    font-size: ${({ theme }) => theme.fontSizes.s};
   }
   margin-right: 36px;
 `;
@@ -321,7 +321,7 @@ const SubmitButton = styled.button`
   border-radius: 5px;
   background-color: #000;
   color: #fff;
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.fontSizes.m};
   cursor: pointer;
 `;
 

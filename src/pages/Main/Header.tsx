@@ -63,7 +63,7 @@ const HeaderInput = styled.input`
   height: 20px;
   border: none;
   outline: none;
-  font-size: ${({ theme }) => theme.fontSizes.micro};
+  font-size: ${({ theme }) => theme.fontSizes.xs};
 `;
 
 const PostSection = styled.div`
@@ -82,7 +82,7 @@ const NavSection = styled.div`
 `;
 
 const NavItem = styled(Link)`
-  font-size: ${({ theme }) => theme.fontSizes.small};
+  font-size: ${({ theme }) => theme.fontSizes.s};
   font-weight: 600;
   text-decoration: none;
   color: #000;

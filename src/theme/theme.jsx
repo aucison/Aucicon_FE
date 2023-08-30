@@ -16,12 +16,12 @@ export const theme = {
     black: '#000000',
   },
   fontSizes: {
-    title: '1.8rem',
-    large: '1.6rem',
-    medium: '1.4rem',
-    regular: '1.2rem',
-    small: '1rem',
-    micro: '0.8rem',
+    xxl: '1.8rem',
+    xl: '1.6rem',
+    l: '1.4rem',
+    m: '1.2rem',
+    s: '1rem',
+    xs: '0.8rem',
   },
   paddings: {
     desktop: '40px 240px',
