@@ -45,7 +45,7 @@ const SelectMenu = styled.div`
   padding: 20px 120px;
   box-sizing: border-box;
   h3 {
-    font-size: 20px;
+    font-size: ${({ theme }) => theme.fontSizes.m};
     margin: 0 20px 1px 0;
     font-weight: 500;
     cursor: pointer;
