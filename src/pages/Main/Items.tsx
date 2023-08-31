@@ -142,6 +142,9 @@ const Brand = styled.p`
   margin-top: 8px;
   margin-bottom: 10px;
   text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const Name = styled.p`
@@ -152,6 +155,9 @@ const Name = styled.p`
   width: 215px;
   margin-top: 0px;
   text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const Price = styled.div`
