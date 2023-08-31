@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import './font.css';
 
 export const GlobalStyle = createGlobalStyle`
   :root {
@@ -8,9 +9,12 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    /* 다운 받아야 함 */
     font-family: "Apple SD Gothic Neo";
     line-height: 1.5;
+  }
+  @font-face {
+  font-family: 'Jost';
+  src: url("../../public/fonts/") format("ttf");
   }
 `;
 

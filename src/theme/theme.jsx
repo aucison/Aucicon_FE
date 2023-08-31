@@ -6,7 +6,7 @@ export const theme = {
     pink: '#fe918d',
     darkPink: '#ff6863',
     darkGrey: '#4d4d4d',
-    grey: '#616161',
+    grey: '#727272',
     lightGrey: '#7c7979',
     blue: '#1D73DF;',
     darkBlue: '#4263a1',
@@ -24,7 +24,7 @@ export const theme = {
     xs: '0.8rem',
   },
   paddings: {
-    desktop: '40px 240px',
+    desktop: '60px 200px',
   },
   borders: {
     grey: '1px solid #727272',
