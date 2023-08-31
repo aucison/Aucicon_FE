@@ -30,6 +30,7 @@ const Header = () => {
         <NavItem to="/sell">Sell</NavItem>
         <NavItem to="/mypage">My Page</NavItem>
         <NavItem to="/like">Like</NavItem>
+        <NavItem to="/like">Login</NavItem>
       </NavSection>
     </HeaderWrapper>
   );
@@ -43,6 +44,7 @@ const HeaderWrapper = styled.div`
   box-sizing: border-box;
   width: 100%;
   border-bottom: 1px solid #ebebeb;
+  font-family: 'Jost';
 `;
 
 const HeaderSearch = styled.div`
@@ -82,12 +84,12 @@ const NavSection = styled.div`
 `;
 
 const NavItem = styled(Link)`
-  font-size: ${({ theme }) => theme.fontSizes.s};
-  font-weight: 600;
+  font-size: ${({ theme }) => theme.fontSizes.m};
   text-decoration: none;
   color: #000;
   position: relative;
   overflow: hidden;
+  font-weight: 400;
   & + & {
     margin-left: 40px;
   }
