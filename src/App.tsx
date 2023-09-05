@@ -9,6 +9,7 @@ import { theme } from './theme/theme';
 import Header from './pages/Main/Header';
 import Purchase from './pages/Purchase';
 import Market from './pages/Market';
+import MyPage from './pages/Mypage';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/mypage" element={<div>My Page</div>} />
+            <Route path="/mypage/:name" element={<MyPage />} />
             <Route path="/sell" element={<Sell />} />
             {/* 추후 경매, 일반에 따른 페이지 라우팅 추가 */}
             <Route path="/buy" element={<Purchase />} />
