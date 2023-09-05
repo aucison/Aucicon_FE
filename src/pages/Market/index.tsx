@@ -1,6 +1,57 @@
 import React from 'react';
 import { styled } from 'styled-components';
 import Dummy from '../../Dummy.json';
+import { useNavigate } from 'react-router-dom';
+
+interface ItemProps {
+  id: number;
+  name: string;
+  brand: string;
+  price: number;
+  img: string;
+  // eslint-disable-next-line no-unused-vars
+  onMouseOver: (e: React.MouseEvent<HTMLElement>) => void;
+  // eslint-disable-next-line no-unused-vars
+  onMouseOut: (e: React.MouseEvent<HTMLElement>) => void;
+}
+
+const ItemComponent = ({
+  id,
+  name,
+  brand,
+  price,
+  img,
+  onMouseOver,
+  onMouseOut,
+}: ItemProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/buy/${id}`, {
+      state: [{ id }, { name }, { brand }, { price }, { img }],
+    });
+  };
+
+  return (
+    <ItemFormat>
+      <div
+        style={{ backgroundImage: 'url(' + img + ')' }}
+        onMouseOver={onMouseOver}
+        onMouseOut={onMouseOut}
+        id={id.toString()}
+        onClick={handleClick}
+      >
+        <span>{name}</span>
+      </div>
+      <span>{brand}</span>
+      <p>{name}</p>
+      <Info>
+        <p>{`${new Intl.NumberFormat().format(price)}원`}</p>
+        <img src="https://velog.velcdn.com/images/ea_st_ring/post/b33749e0-3bc7-4576-b997-e245fb192477/image.svg" />
+      </Info>
+    </ItemFormat>
+  );
+};
 
 const Market = () => {
   const onClickCategory = (
@@ -85,28 +136,20 @@ const Market = () => {
         </IsAuc>
         <ContentsWrapper>
           {Dummy.items.map((item) => (
-            <ItemFormat key={item.id}>
-              <div
-                style={{
-                  background: `url(${item.img})`,
-                  backgroundSize: 'cover',
-                }}
-                onMouseOver={(e) => {
-                  showInfo(e, item.img);
-                }}
-                onMouseOut={(e) => {
-                  hideInfo(e, item.img);
-                }}
-              >
-                <span>{item.name}</span>
-              </div>
-              <span>{item.brand}</span>
-              <p>{item.name}</p>
-              <Info>
-                <p>{`${new Intl.NumberFormat().format(item.price)}원`}</p>
-                <img src="https://velog.velcdn.com/images/ea_st_ring/post/b33749e0-3bc7-4576-b997-e245fb192477/image.svg" />
-              </Info>
-            </ItemFormat>
+            <ItemComponent
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              brand={item.brand}
+              price={item.price}
+              img={item.img}
+              onMouseOver={(e) => {
+                showInfo(e, item.img);
+              }}
+              onMouseOut={(e) => {
+                hideInfo(e, item.img);
+              }}
+            />
           ))}
         </ContentsWrapper>
       </Contents>
