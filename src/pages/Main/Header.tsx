@@ -28,7 +28,7 @@ const Header = () => {
       <NavSection>
         <NavItem to="/market">Market</NavItem>
         <NavItem to="/sell">Sell</NavItem>
-        <NavItem to="/mypage">My Page</NavItem>
+        <NavItem to="/mypage/buy">My Page</NavItem>
         <NavItem to="/like">Like</NavItem>
         <NavItem to="/like">Login</NavItem>
       </NavSection>
