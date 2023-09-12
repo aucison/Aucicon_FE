@@ -1,8 +1,13 @@
 import React, { ChangeEvent, KeyboardEvent, useState, useRef } from 'react';
 import { styled, css } from 'styled-components';
+import Preview from './Preview';
 
 interface ToggleBtnProps {
   toggle: boolean;
+}
+interface ImageProps {
+  image_file: string[] | null;
+  preview_URL: string[] | null;
 }
 
 const Sell = () => {
@@ -11,6 +16,10 @@ const Sell = () => {
   // eslint-disable-next-line no-unused-vars
   const [selectedCategory, setSelectedCategory] = useState('일반');
   const [toggle, setToggle] = useState(false);
+  const [images, setImages] = useState<ImageProps | null>({
+    image_file: [],
+    preview_URL: [],
+  });
 
   const button1Ref = useRef<HTMLButtonElement>(null);
   const button2Ref = useRef<HTMLButtonElement>(null);
@@ -42,6 +51,34 @@ const Sell = () => {
     setToggle((prev) => !prev);
   };
 
+  const onUpload = (e: any) => {
+    if (e.target.files[0]) {
+      if (images !== null && images?.preview_URL !== null) {
+        let preview_URL_ARR = [];
+        for (let i = 0; i < e.target.files.length; i++) {
+          URL.revokeObjectURL(images.preview_URL[i] as string); // 새로운 이미지를 올릴 경우 기존 url 폐기
+          preview_URL_ARR.push(URL.createObjectURL(e.target.files[i]));
+        }
+        setImages({
+          image_file: e.target.files,
+          preview_URL: preview_URL_ARR,
+        });
+        console.log(images);
+      }
+    }
+  };
+
+  React.useEffect(() => {
+    // 컴포넌트가 언마운트 시 revokeObjectURL()을 통해 URL 폐기하여 메모리 누수 방지
+    return () => {
+      if (images !== null && images?.preview_URL !== null) {
+        for (let i = 0; i < images?.preview_URL.length; i++) {
+          URL.revokeObjectURL(images.preview_URL[i] as string);
+        }
+      }
+    };
+  }, []);
+
   return (
     <Wrapper>
       <h1>내 아이템 판매하기</h1>
@@ -60,6 +97,14 @@ const Sell = () => {
           </li>
         </ul>
       </Caution>
+      <SelectArea>
+        <Index>
+          <h3>경매 비활성화</h3>
+        </Index>
+        <ToggleBtn onClick={clickedToggle} toggle={toggle}>
+          <Circle toggle={toggle} />
+        </ToggleBtn>
+      </SelectArea>
       <Category>
         <Index>
           <h3>카테고리</h3>
@@ -107,17 +152,30 @@ const Sell = () => {
         <Index>
           <h3>사진 첨부</h3>
         </Index>
-        <button>사진 첨부하기 {'>'}</button>
+        <ImageContainer>
+          <label htmlFor="fileInput">사진 첨부하기 {'>'}</label>
+          <input
+            id="fileInput"
+            type="file"
+            multiple
+            onChange={onUpload}
+            style={{ display: 'none' }}
+          />
+          <Preview
+            imageSrc={
+              images?.preview_URL ? (images.preview_URL as string[]) : null
+            }
+          />
+        </ImageContainer>
       </BoxFormat>
-      <SelectArea>
-        <Index>
-          <h3>경매 비활성화</h3>
-        </Index>
-        <ToggleBtn onClick={clickedToggle} toggle={toggle}>
-          <Circle toggle={toggle} />
-        </ToggleBtn>
-      </SelectArea>
-      {!toggle ? (
+      {toggle ? (
+        <BoxFormat>
+          <Index>
+            <h3>상품 가격</h3>
+          </Index>
+          <input placeholder="상품 가격을 입력해주세요." type="number" />
+        </BoxFormat>
+      ) : (
         <>
           <BoxFormat>
             <Index>
@@ -132,13 +190,6 @@ const Sell = () => {
             <input placeholder="경매가" type="number" />
           </BoxFormat>
         </>
-      ) : (
-        <BoxFormat>
-          <Index>
-            <h3>상품 가격</h3>
-          </Index>
-          <input placeholder="상품 가격을 입력해주세요." type="number" />
-        </BoxFormat>
       )}
       <SubmitBox>
         <SubmitButton>등록하기</SubmitButton>
@@ -263,6 +314,34 @@ const BoxFormat = styled.div`
     justify-content: center;
     align-items: center;
     margin-right: 16px;
+    cursor: pointer;
+  }
+`;
+
+const ImageContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  #fileInput {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+  }
+  label {
+    width: fit-content;
+    height: 24px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 20px 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 16px;
     cursor: pointer;
   }
 `;
