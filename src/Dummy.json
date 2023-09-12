@@ -14,7 +14,7 @@
       "brand": "Stussy",
       "name": "STUSSY 20SS T-Shirt",
       "price": 63000,
-      "timelimit": "07H 32M"
+      "timelimit": "35H 20M"
     },
     {
       "id": 3,
@@ -22,7 +22,7 @@
       "brand": "Celine",
       "name": "Celine Vintage Silver Ring",
       "price": 270000,
-      "timelimit": "07H 32M"
+      "timelimit": "05H 12M"
     },
     {
       "id": 4,
@@ -38,7 +38,7 @@
       "brand": "Merrel",
       "name": "머렐 고프코어 바람막이",
       "price": 70000,
-      "timelimit": "07H 32M"
+      "timelimit": "17H 52M"
     },
     {
       "id": 6,
@@ -46,7 +46,7 @@
       "brand": "Chorme Hearts",
       "name": "크롬하츠 인피니티 링",
       "price": 430000,
-      "timelimit": "07H 32M"
+      "timelimit": "57H 02M"
     },
     {
       "id": 7,
@@ -54,7 +54,7 @@
       "brand": "Other",
       "name": "니콘 쿨픽스 7900",
       "price": 72000,
-      "timelimit": "07H 32M"
+      "timelimit": "10H 36M"
     },
     {
       "id": 8,
@@ -70,7 +70,7 @@
       "brand": "Vivienne Westwood",
       "name": "Vivienne Westwood Pink Watch",
       "price": 53000,
-      "timelimit": "07H 32M"
+      "timelimit": "09H 42M"
     },
     {
       "id": 10,
@@ -78,7 +78,7 @@
       "brand": "Issey Miyake",
       "name": "이세이 미야케 차이나 카라 반팔 셔츠",
       "price": 83000,
-      "timelimit": "07H 32M"
+      "timelimit": "07H 17M"
     },
     {
       "id": 11,
@@ -86,7 +86,7 @@
       "brand": "Adidas",
       "name": "아디다스 독일 올드스쿨 바람막이",
       "price": 99000,
-      "timelimit": "07H 32M"
+      "timelimit": "03H 12M"
     },
     {
       "id": 12,
@@ -94,7 +94,7 @@
       "brand": "Ader Error",
       "name": "아더에러 고스트 한정반팔",
       "price": 190000,
-      "timelimit": "07H 32M"
+      "timelimit": "17H 22M"
     }
   ]
 }
