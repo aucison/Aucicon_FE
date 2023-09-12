@@ -95,6 +95,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
+  background-color: #fafafa;
+  border-top: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
   .slick-list {
     overflow: hidden !important;
     max-width: 100vw;
@@ -105,13 +108,13 @@ const Wrapper = styled.div`
     overflow: hidden !important;
     max-width: 100vw;
     width: 100% !important;
-    height: 425px;
+    height: 405px;
   }
   .slick-slider .slick-initialized {
     width: 100%;
   }
   .slick-slide .slick-active .slick-current {
-    width: 215px;
+    width: 180px !important;
   }
   .slick-track {
     left: 120px;
@@ -127,8 +130,10 @@ const ItemFormat = styled.div`
 `;
 
 const Img = styled.img`
-  width: 215px;
-  height: 267px;
+  width: 200px;
+  height: 200px;
+  margin-top: 45px;
+  border-radius: 5px;
 `;
 
 const Brand = styled.p`
@@ -136,12 +141,12 @@ const Brand = styled.p`
   font-family: Apple SD Gothic Neo;
   font-size: 16px;
   font-weight: 700;
-  width: 215px;
+  width: 200px;
   margin-top: 8px;
   margin-bottom: 0px;
   margin-top: 8px;
   margin-bottom: 10px;
-  text-align: left;
+  text-align: center;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -152,9 +157,9 @@ const Name = styled.p`
   font-family: Apple SD Gothic Neo;
   font-size: 14px;
   font-weight: 500;
-  width: 215px;
+  width: 200px;
   margin-top: 0px;
-  text-align: left;
+  text-align: center;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -164,9 +169,10 @@ const Price = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 215px;
+  width: 200px;
+  border-top: 1px solid #e1e1e1;
   p {
-    margin-top: 0px;
+    margin-top: 12px;
     margin-bottom: 0px;
     font-size: 14px;
   }
@@ -174,21 +180,19 @@ const Price = styled.div`
 
 const Text = styled.p`
   color: #000;
-  font-family: Apple SD Gothic Neo;
-  font-weight: 700;
+  font-weight: 500;
 `;
 
 const Value = styled.p`
   color: #000;
-  font-family: Apple SD Gothic Neo;
-  font-weight: 600;
+  font-weight: 800;
 `;
 
 const TimeLimit = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 215px;
+  width: 200px;
   p {
     margin-top: 4px;
     margin-bottom: 0px;
