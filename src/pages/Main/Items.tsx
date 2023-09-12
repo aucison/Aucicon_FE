@@ -5,6 +5,15 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Dummy from '../../Dummy.json';
 
+type Item = {
+  id?: number;
+  img: string;
+  brand: string;
+  name: string;
+  price: number;
+  timelimit: string;
+};
+
 type ClassProps = {
   title: string;
   subtitle: string;
@@ -27,20 +36,23 @@ const Items = ({ title, subtitle }: ClassProps) => {
       </Class>
       <Wrapper>
         <Slider {...settings}>
-          {Dummy.items.map((item) => (
-            <Item key={item.id}>
+          {(Dummy.items as Item[]).map((item) => (
+            <ItemFormat key={item.id}>
               <Img src={item.img}></Img>
               <Brand>{item.brand}</Brand>
               <Name>{item.name}</Name>
               <Price>
                 <Text>최고가액</Text>
-                <Value>{item.price}</Value>
+                {/* Number 포맷팅 */}
+                <Value>{`${new Intl.NumberFormat().format(
+                  item.price,
+                )}원`}</Value>
               </Price>
               <TimeLimit>
                 <Text>남은 시간</Text>
                 <Value>{item.timelimit}</Value>
               </TimeLimit>
-            </Item>
+            </ItemFormat>
           ))}
         </Slider>
       </Wrapper>
@@ -53,7 +65,7 @@ export default Items;
 const Section = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 `;
 
 const Class = styled.div`
@@ -100,7 +112,7 @@ const Wrapper = styled.div`
     width: 100%;
   }
   .slick-slide .slick-active .slick-current {
-    width: 215px;
+    width: 197px;
   }
   .slick-track {
     left: 120px;
@@ -108,7 +120,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Item = styled.div`
+const ItemFormat = styled.div`
   display: flex;
   flex-direction: column;
   width: fit-content !important;
@@ -116,8 +128,8 @@ const Item = styled.div`
 `;
 
 const Img = styled.img`
-  width: 215px;
-  height: 267px;
+  width: 197px;
+  height: 244px;
 `;
 
 const Brand = styled.p`
@@ -125,12 +137,15 @@ const Brand = styled.p`
   font-family: Apple SD Gothic Neo;
   font-size: 16px;
   font-weight: 700;
-  width: 215px;
+  width: 197px;
   margin-top: 8px;
   margin-bottom: 0px;
   margin-top: 8px;
   margin-bottom: 10px;
   text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const Name = styled.p`
@@ -138,16 +153,19 @@ const Name = styled.p`
   font-family: Apple SD Gothic Neo;
   font-size: 14px;
   font-weight: 500;
-  width: 215px;
+  width: 197px;
   margin-top: 0px;
   text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const Price = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 215px;
+  width: 197px;
   p {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -171,7 +189,7 @@ const TimeLimit = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 215px;
+  width: 197px;
   p {
     margin-top: 4px;
     margin-bottom: 0px;

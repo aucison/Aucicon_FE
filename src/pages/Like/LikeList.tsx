@@ -46,6 +46,9 @@ export default LikeList;
 
 const Section = styled.div`
   padding: 40px 240px;
+  h3 {
+    font-size: ${({ theme }) => theme.fontSizes.xxl};
+  }
 `;
 
 const Header = styled.div`
@@ -63,13 +66,13 @@ const Info = styled.div`
   align-items: center;
   p:first-child {
     color: #000;
-    font-size: 24px;
-    font-weight: 600;
+    font-size: ${({ theme }) => theme.fontSizes.s};
+    font-weight: 500;
   }
   p:last-child {
     color: #000;
-    font-size: 24px;
-    font-weight: 600;
+    font-size: ${({ theme }) => theme.fontSizes.s};
+    font-weight: 500;
   }
 `;
 

@@ -18,7 +18,7 @@ const Item = () => {
             <Brand>{item.brand}</Brand>
             <Name>{item.name}</Name>
             <Info>
-              <Price>{item.price}원</Price>
+              <Price>{`${new Intl.NumberFormat().format(item.price)}원`}</Price>
               <img src={LikeBtn} />
             </Info>
           </Container>

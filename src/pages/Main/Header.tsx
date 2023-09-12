@@ -28,8 +28,9 @@ const Header = () => {
       <NavSection>
         <NavItem to="/market">Market</NavItem>
         <NavItem to="/sell">Sell</NavItem>
-        <NavItem to="/mypage">My Page</NavItem>
+        <NavItem to="/mypage/buy">My Page</NavItem>
         <NavItem to="/like">Like</NavItem>
+        <NavItem to="/like">Login</NavItem>
       </NavSection>
     </HeaderWrapper>
   );
@@ -43,13 +44,14 @@ const HeaderWrapper = styled.div`
   box-sizing: border-box;
   width: 100%;
   border-bottom: 1px solid #ebebeb;
+  font-family: 'Jost';
 `;
 
 const HeaderSearch = styled.div`
   width: 330px;
   height: 40px;
   border-radius: 20px;
-  border: 1px solid #757575;
+  border: ${({ theme }) => theme.borders.grey};
   margin-left: 60px;
   margin-top: 10px;
   padding: 0 10px;
@@ -63,7 +65,7 @@ const HeaderInput = styled.input`
   height: 20px;
   border: none;
   outline: none;
-  font-size: 12px;
+  font-size: ${({ theme }) => theme.fontSizes.xs};
 `;
 
 const PostSection = styled.div`
@@ -82,12 +84,12 @@ const NavSection = styled.div`
 `;
 
 const NavItem = styled(Link)`
-  font-size: 16px;
-  font-weight: 600;
+  font-size: ${({ theme }) => theme.fontSizes.m};
   text-decoration: none;
   color: #000;
   position: relative;
   overflow: hidden;
+  font-weight: 400;
   & + & {
     margin-left: 40px;
   }
