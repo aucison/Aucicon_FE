@@ -131,7 +131,7 @@ const Market = () => {
               onClickCategory(e, 'auc');
             }}
           >
-            비경매
+            판매
           </p>
         </IsAuc>
         <ContentsWrapper>
