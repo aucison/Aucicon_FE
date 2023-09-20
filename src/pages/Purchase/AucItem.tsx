@@ -34,7 +34,7 @@ const AucItem = (props: any) => {
           </CategoryInfo>
           <Divider />
 
-          <TimerBox>마감까지 24:36:40.18</TimerBox>
+          <TimerBox>마감까지 24 : 36 : 40.18</TimerBox>
           <h2>{item.name}</h2>
           <h3>{item.brand}</h3>
           <PriceInfo>
@@ -139,16 +139,17 @@ const Info = styled.div`
 
 const TimerBox = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  width: 164px;
+  text-align: center;
+  width: 180px;
   height: 32px;
-  padding: 0 20px;
+  padding: 4px 0;
   background-color: #000;
   color: #fff;
   font-size: ${({ theme }) => theme.fontSizes.xs};
   border-radius: 24px;
-  margin-top: 24px;
+  margin-top: 16px;
 `;
 
 const Divider = styled.div`
