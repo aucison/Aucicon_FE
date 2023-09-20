@@ -43,8 +43,8 @@ const Items = ({ title, subtitle }: ClassProps) => {
       <Wrapper>
         <Slider {...settings}>
           {(Dummy.items as Item[]).map((item) => (
-            <ItemFormat key={item.id} data-id={item.id} onClick={onClickItem}>
-              <Img src={item.img}></Img>
+            <ItemFormat key={item.id}>
+              <Img src={item.img} data-id={item.id} onClick={onClickItem}></Img>
               <Brand>{item.brand}</Brand>
               <Name>{item.name}</Name>
               <Price>
