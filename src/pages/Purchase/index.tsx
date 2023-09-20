@@ -1,98 +1,87 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
+// eslint-disable-next-line no-unused-vars
+import AucItem from './AucItem';
+// eslint-disable-next-line no-unused-vars
+import NorItem from './NorItem';
+import DetailInfo from './DetailInfo';
+import QnA from './QnA';
 import Dummy from '../../Dummy.json';
+
+interface Item {
+  id: number;
+  is_wish: string;
+  category: string;
+  kind: string;
+  img: string;
+  brand: string;
+  name: string;
+  price: number;
+  timelimit: string;
+}
+
 const Purchase = () => {
   // TODO: 개별 상품 조회를 통해 값 채우기
+  const { id } = useParams<{ id: string }>();
+  const [item, setItem] = useState<Item>();
+  const itemData = Dummy.items;
+  const [board, setBoard] = useState(true);
+  const onClickMenu = (booleanValue: boolean) => {
+    setBoard(booleanValue);
+  };
 
-  const item = Dummy.items[4];
-  console.log(item);
+  useEffect(() => {
+    const item = itemData.find((item) => item.id === Number(id));
+    console.log(item);
+    item && setItem(item);
+  }, [id, itemData]);
+  if (!item) return <div>잘못된 접근입니다.</div>;
   return (
-    <Section>
-      <Wrapper>
-        <ImageSection>
-          <ImageWrapper>
-            <img src={item.img} alt="product_img" />
-          </ImageWrapper>
-        </ImageSection>
-        <InfoSection>
-          <h3>{item.brand}</h3>
-          <h1>{item.name}</h1>
-          <Info>
-            <h2>{`${new Intl.NumberFormat().format(item.price)}원`}</h2>
-            <img src="https://velog.velcdn.com/images/ea_st_ring/post/b33749e0-3bc7-4576-b997-e245fb192477/image.svg" />
-          </Info>
-          <Divider />
-
-          <Divider />
-        </InfoSection>
-      </Wrapper>
-    </Section>
+    <>
+      {(item.category === 'auc' && <AucItem id={id} />) || <NorItem id={id} />}
+      <SelectMenu>
+        <h3
+          onClick={() => onClickMenu(true)}
+          style={
+            board
+              ? { fontWeight: 700, borderBottom: '4px solid black' }
+              : { fontWeight: 500 }
+          }
+        >
+          상품 정보
+        </h3>
+        <h3
+          onClick={() => onClickMenu(false)}
+          style={
+            board
+              ? { fontWeight: 500 }
+              : { fontWeight: 700, borderBottom: '4px solid black' }
+          }
+        >
+          문의
+        </h3>
+      </SelectMenu>
+      <Divider />
+      {(board && <DetailInfo />) || <QnA />}
+    </>
   );
 };
 
-const Section = styled.div`
-  padding: 120px 240px;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
+const SelectMenu = styled.div`
   width: 100%;
-  height: 600px;
-`;
-
-const ImageSection = styled.div`
-  width: 40%;
-  height: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-`;
-
-const ImageWrapper = styled.div`
-  width: 100%;
-  height: auto;
-  border: ${({ theme }) => theme.borders.grey};
-  margin-top: 8px;
-  img {
-    width: 100%;
-    height: 100%;
-  }
-`;
-
-const InfoSection = styled.div`
-  width: 60%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: 40px;
-  h1 {
-    margin: 0;
-    font-size: ${({ theme }) => theme.fontSizes.xl};
-  }
+  flex-direction: row;
+  padding: 0px 240px;
+  box-sizing: border-box;
   h3 {
-    margin: 0 0 8px 0;
     font-size: ${({ theme }) => theme.fontSizes.m};
-  }
-`;
-
-const Info = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 120px;
-  height: 20px !important;
-  h2 {
-    margin: 0;
-    font-size: ${({ theme }) => theme.fontSizes.xl};
-    font-weight: 600;
-  }
-  img {
-    width: 30px;
-    height: 30px;
-    border: none;
+    margin: 0 40px 0 0;
+    font-weight: 500;
     cursor: pointer;
+    height: 40px;
   }
 `;
 
@@ -100,7 +89,6 @@ const Divider = styled.div`
   width: 100%;
   height: 1px;
   background: ${({ theme }) => theme.colors.grey};
-  margin-top: 16px;
 `;
 
 export default Purchase;
