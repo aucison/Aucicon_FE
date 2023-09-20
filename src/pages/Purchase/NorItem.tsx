@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from 'styled-components';
 import Dummy from '../../Dummy.json';
-const NorItem = () => {
-  const item = Dummy.items[4];
-  console.log(item);
+const NorItem = (props: any) => {
+  const id = props.id;
+  const item = Dummy.items[Number(id) - 1];
+  const categoryText = item.kind === 'hand' ? '핸드메이드' : '일반';
+  const wishSrcs = [
+    'https://velog.velcdn.com/images/ea_st_ring/post/4fddf0d6-e316-42e2-b925-284418fe3666/image.svg',
+    'https://velog.velcdn.com/images/ea_st_ring/post/b33749e0-3bc7-4576-b997-e245fb192477/image.svg',
+  ];
+  const [isWishSrc, setIsWishSrc] = useState(
+    item.is_wish === 'true' ? wishSrcs[0] : wishSrcs[1],
+  );
+  const onClickWish = () => {
+    setIsWishSrc(isWishSrc === wishSrcs[0] ? wishSrcs[1] : wishSrcs[0]);
+  };
+
   return (
     <Section>
       {/* 상품 메인 */}
@@ -16,8 +28,8 @@ const NorItem = () => {
         <InfoSection>
           <CategoryInfo>
             {/* TODO: 경매/판매, 일반/핸드메이드 구분하여 텍스트*/}
-            <h3>판매 상품 ㆍ</h3>
-            <h3>일반</h3>
+            <h3>판매ㆍ </h3>
+            <h3>{categoryText}</h3>
           </CategoryInfo>
 
           <Divider />
@@ -25,7 +37,7 @@ const NorItem = () => {
           <h3>{item.brand}</h3>
           <Info>
             <h2>{`${new Intl.NumberFormat().format(item.price)}원`}</h2>
-            <img src="https://velog.velcdn.com/images/ea_st_ring/post/b33749e0-3bc7-4576-b997-e245fb192477/image.svg" />
+            <img src={isWishSrc} onClick={onClickWish} alt="wish_img" />
           </Info>
 
           <Divider />
@@ -74,10 +86,11 @@ const InfoSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 40px;
+  margin-left: 60px;
   h2 {
     margin: 0;
     font-size: ${({ theme }) => theme.fontSizes.m};
+    text-align: start;
   }
   h3 {
     margin: 8px 0 8px 0;
@@ -132,9 +145,12 @@ const ButtonBox = styled.div`
 `;
 
 const Button = styled.button`
-  width: 200px;
-  height: 60px;
+  width: 160px;
+  height: 48px;
+  cursor: pointer;
   background-color: black;
+  font-size: ${({ theme }) => theme.fontSizes.s};
+  font-family: 'Apple SD Gothic Neo';
   color: white;
   align-self: flex-end;
 `;
