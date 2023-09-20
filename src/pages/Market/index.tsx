@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from 'styled-components';
 import Dummy from '../../Dummy.json';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ interface ItemProps {
   id: number;
   name: string;
   brand: string;
+  is_wish: string;
   price: number;
   img: string;
   // eslint-disable-next-line no-unused-vars
@@ -19,6 +20,7 @@ const ItemComponent = ({
   id,
   name,
   brand,
+  is_wish,
   price,
   img,
   onMouseOver,
@@ -30,6 +32,17 @@ const ItemComponent = ({
     navigate(`/buy/${id}`, {
       state: [{ id }, { name }, { brand }, { price }, { img }],
     });
+  };
+
+  const wishSrcs = [
+    'https://velog.velcdn.com/images/ea_st_ring/post/4fddf0d6-e316-42e2-b925-284418fe3666/image.svg',
+    'https://velog.velcdn.com/images/ea_st_ring/post/b33749e0-3bc7-4576-b997-e245fb192477/image.svg',
+  ];
+  const [isWishSrc, setIsWishSrc] = useState(
+    is_wish === 'true' ? wishSrcs[0] : wishSrcs[1],
+  );
+  const onClickWish = () => {
+    setIsWishSrc(isWishSrc === wishSrcs[0] ? wishSrcs[1] : wishSrcs[0]);
   };
 
   return (
@@ -47,7 +60,7 @@ const ItemComponent = ({
       <p>{name}</p>
       <Info>
         <p>{`${new Intl.NumberFormat().format(price)}원`}</p>
-        <img src="https://velog.velcdn.com/images/ea_st_ring/post/b33749e0-3bc7-4576-b997-e245fb192477/image.svg" />
+        <img src={isWishSrc} onClick={onClickWish} />
       </Info>
     </ItemFormat>
   );
@@ -143,6 +156,7 @@ const Market = () => {
               brand={item.brand}
               price={item.price}
               img={item.img}
+              is_wish={item.is_wish}
               onMouseOver={(e) => {
                 showInfo(e, item.img);
               }}
