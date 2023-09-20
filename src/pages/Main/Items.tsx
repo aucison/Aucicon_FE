@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -27,6 +28,12 @@ const Items = ({ title, subtitle }: ClassProps) => {
     slidesToShow: 6,
   };
 
+  const navigate = useNavigate();
+  const onClickItem = (event: React.MouseEvent<HTMLDivElement>) => {
+    const id = event.currentTarget.getAttribute('data-id');
+    if (id) navigate(`/buy/${Number(id)}`);
+  };
+
   return (
     <Section>
       <Class>
@@ -36,7 +43,7 @@ const Items = ({ title, subtitle }: ClassProps) => {
       <Wrapper>
         <Slider {...settings}>
           {(Dummy.items as Item[]).map((item) => (
-            <ItemFormat key={item.id}>
+            <ItemFormat key={item.id} data-id={item.id} onClick={onClickItem}>
               <Img src={item.img}></Img>
               <Brand>{item.brand}</Brand>
               <Name>{item.name}</Name>
