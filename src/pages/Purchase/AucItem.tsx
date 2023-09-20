@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from 'styled-components';
 import Dummy from '../../Dummy.json';
 import SelectBar from './SelectBar';
 
-const AucItem = () => {
-  const item = Dummy.items[4];
-  console.log(item);
+const AucItem = (props: any) => {
+  const id = props.id;
+  const item = Dummy.items[Number(id) - 1];
+  const categoryText = item.kind === 'hand' ? '핸드메이드' : '일반';
+  const wishSrcs = [
+    'https://velog.velcdn.com/images/ea_st_ring/post/4fddf0d6-e316-42e2-b925-284418fe3666/image.svg',
+    'https://velog.velcdn.com/images/ea_st_ring/post/b33749e0-3bc7-4576-b997-e245fb192477/image.svg',
+  ];
+  const [isWishSrc, setIsWishSrc] = useState(
+    item.is_wish === 'true' ? wishSrcs[0] : wishSrcs[1],
+  );
+  const onClickWish = () => {
+    setIsWishSrc(isWishSrc === wishSrcs[0] ? wishSrcs[1] : wishSrcs[0]);
+  };
+
   return (
     <Section>
       <Wrapper>
@@ -17,13 +29,13 @@ const AucItem = () => {
         <InfoSection>
           <CategoryInfo>
             {/* TODO: 경매/판매, 일반/핸드메이드 구분하여 텍스트*/}
-            <h3>경매 상품 ㆍ</h3>
-            <h3>일반</h3>
+            <h3>경매ㆍ </h3>
+            <h3>{categoryText}</h3>
           </CategoryInfo>
           <Divider />
 
           <TimerBox>마감까지 24:36:40.18</TimerBox>
-          <h1>{item.name}</h1>
+          <h2>{item.name}</h2>
           <h3>{item.brand}</h3>
           <PriceInfo>
             <Info>
@@ -36,9 +48,12 @@ const AucItem = () => {
               <h3>시작가</h3>
               <h2>{`${new Intl.NumberFormat().format(item.price)}원`}</h2>
             </Info>
-            <img src="https://velog.velcdn.com/images/ea_st_ring/post/b33749e0-3bc7-4576-b997-e245fb192477/image.svg" />
+            <img src={isWishSrc} onClick={onClickWish} alt="wish_img" />
           </PriceInfo>
           <SelectBar />
+          <ButtonBox>
+            <Button>응찰하기</Button>
+          </ButtonBox>
         </InfoSection>
       </Wrapper>
     </Section>
@@ -46,13 +61,13 @@ const AucItem = () => {
 };
 
 const Section = styled.div`
-  padding: 120px 240px;
+  padding: 80px 240px;
 `;
 
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 600px;
+  height: 450px;
 `;
 
 const ImageSection = styled.div`
@@ -65,7 +80,7 @@ const ImageSection = styled.div`
 
 const ImageWrapper = styled.div`
   width: 100%;
-  height: auto;
+  height: 90%;
   border: ${({ theme }) => theme.borders.grey};
   margin-top: 8px;
   img {
@@ -80,10 +95,11 @@ const InfoSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 40px;
-  h1 {
+  margin-left: 60px;
+  h2 {
     margin: 12px 0 0 4px;
-    font-size: ${({ theme }) => theme.fontSizes.l};
+    font-size: ${({ theme }) => theme.fontSizes.m};
+    text-align: start;
   }
   h3 {
     margin: 0 0 8px 6px;
@@ -137,8 +153,7 @@ const TimerBox = styled.div`
 
 const Divider = styled.div`
   width: 100%;
-  height: 1px;
-  background: ${({ theme }) => theme.colors.grey};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.lightGrey};
   margin-top: 16px;
 `;
 
@@ -156,6 +171,26 @@ const PriceInfo = styled.div`
     cursor: pointer;
     align-self: flex-end;
   }
+`;
+
+const ButtonBox = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: 100px;
+`;
+
+const Button = styled.button`
+  width: 160px;
+  height: 48px;
+  cursor: pointer;
+  background-color: black;
+  font-size: ${({ theme }) => theme.fontSizes.s};
+  font-family: 'Apple SD Gothic Neo';
+  color: white;
+  align-self: flex-end;
 `;
 
 export default AucItem;
