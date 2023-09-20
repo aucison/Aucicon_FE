@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slide_1 from './Slide_1';
+import Slide_2 from './Slide_2';
 
 const Banner = () => {
   const settings = {
@@ -29,7 +30,7 @@ const Banner = () => {
             <Slide_1 />
           </div>
           <div>
-            <Slide_1 />
+            <Slide_2 />
           </div>
           <div>
             <Slide_1 />
