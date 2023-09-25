@@ -9,13 +9,16 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    font-family: "Apple SD Gothic Neo";
+    font-family: "Apple SD Gothic Neo", "Pretendard";
     line-height: 1.5;
     margin: 0;
   }
   @font-face {
   font-family: 'Jost';
   src: url("../../public/fonts/") format("ttf");
+  }
+  button {
+    font-family: 'Pretendard';
   }
 `;
 
