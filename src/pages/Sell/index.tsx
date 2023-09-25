@@ -274,27 +274,21 @@ const Sell = () => {
             </Index>
             <SelectTimeArea>
               <div>
-                <TimeBtn
-                  id="24"
-                  onClick={onClickTime}
-                  selected={24 === time ? true : false}
-                />
+                <button onClick={onClickTime}>
+                  <TimeBtn id="24" selected={24 === time ? true : false} />
+                </button>
                 <h3>24시간</h3>
               </div>
               <div>
-                <TimeBtn
-                  id="48"
-                  onClick={onClickTime}
-                  selected={48 === time ? true : false}
-                />
+                <button onClick={onClickTime}>
+                  <TimeBtn id="48" selected={48 === time ? true : false} />
+                </button>
                 <h3>48시간</h3>
               </div>
               <div>
-                <TimeBtn
-                  id="72"
-                  onClick={onClickTime}
-                  selected={72 === time ? true : false}
-                />
+                <button onClick={onClickTime}>
+                  <TimeBtn id="72" selected={72 === time ? true : false} />
+                </button>
                 <h3>72시간</h3>
               </div>
             </SelectTimeArea>
@@ -360,7 +354,7 @@ const Index = styled.div`
 `;
 const Category = styled.div`
   width: 100%;
-  margin-top: 40px;
+  margin-top: 48px;
   padding: 0 20px 0 0;
   box-sizing: border-box;
   display: flex;
@@ -506,31 +500,43 @@ const Circle = styled.div<ToggleBtnProps>`
 `;
 
 const SelectTimeArea = styled.div`
-  width: 120px;
+  width: 130px;
   height: fit-content;
   display: flex;
   flex-direction: column;
   h3 {
     margin: -2px 0 0 20px;
+    font-size: ${({ theme }) => theme.fontSizes.m};
+    font-weight: 500;
   }
   div {
     display: flex;
     align-items: center;
-    justify-content: center;
     width: 100%;
     margin: 0 0 24px 0;
+  }
+  button {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 1px solid #000;
+    margin-right: 0;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
 const TimeBtn = styled.span<TimeBtnProps>`
-  width: 28px;
-  height: 28px;
-  border: 1px solid black;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   ${(props) =>
     props.selected &&
     css`
-      background-color: black;
+      background-color: #000000;
       color: white;
     `}
 `;
