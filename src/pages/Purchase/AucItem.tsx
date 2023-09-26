@@ -3,10 +3,19 @@ import { styled } from 'styled-components';
 import Dummy from '../../Dummy.json';
 import SelectBar from './SelectBar';
 
+export type SelectBarProps = {
+  percentage: number;
+  // eslint-disable-next-line no-unused-vars
+  setPercentage: (percentage: number) => void;
+};
+
 const AucItem = (props: any) => {
   const id = props.id;
   const item = Dummy.items[Number(id) - 1];
+  const price = item.price;
   const categoryText = item.kind === 'hand' ? '핸드메이드' : '일반';
+  const [percentage, setPercentage] = useState<number>(3);
+  const expectedPrice = (price * percentage) / 100 + price;
   const wishSrcs = [
     'https://velog.velcdn.com/images/ea_st_ring/post/4fddf0d6-e316-42e2-b925-284418fe3666/image.svg',
     'https://velog.velcdn.com/images/ea_st_ring/post/b33749e0-3bc7-4576-b997-e245fb192477/image.svg',
@@ -46,14 +55,18 @@ const AucItem = (props: any) => {
             </Info>
             <Info>
               <h3>시작가</h3>
-              <h2>{`${new Intl.NumberFormat().format(item.price)}원`}</h2>
+              <h2>{`${new Intl.NumberFormat().format(price)}원`}</h2>
             </Info>
             <img src={isWishSrc} onClick={onClickWish} alt="wish_img" />
           </PriceInfo>
-          <SelectBar />
-          <ButtonBox>
+          <SelectBar percentage={percentage} setPercentage={setPercentage} />
+          <Box>
+            <ExpectedPrice>
+              <h3>예상 응찰가 :</h3>
+              <h2>{`${new Intl.NumberFormat().format(expectedPrice)}원`}</h2>
+            </ExpectedPrice>
             <Button>응찰하기</Button>
-          </ButtonBox>
+          </Box>
         </InfoSection>
       </Wrapper>
     </Section>
@@ -174,13 +187,32 @@ const PriceInfo = styled.div`
   }
 `;
 
-const ButtonBox = styled.div`
+const Box = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: flex-end;
   margin-top: 100px;
+`;
+
+const ExpectedPrice = styled.div`
+  width: 300px;
+  height: 100%;
+  margin-left: 12px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  h2 {
+    margin: 0;
+    color: red;
+    font-size: ${({ theme }) => theme.fontSizes.l};
+  }
+  h3 {
+    margin: 0 8px 0 0;
+    font-size: ${({ theme }) => theme.fontSizes.s};
+  }
 `;
 
 const Button = styled.button`

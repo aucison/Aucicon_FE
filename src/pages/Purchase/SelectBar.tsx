@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { throttle } from 'lodash';
+import { SelectBarProps } from './AucItem';
 
-interface SelectBarProps {
+interface ColorProps {
   color: string;
 }
 
-const SelectBar = () => {
-  // eslint-disable-next-line no-unused-vars
-  const [percentage, setPercentage] = useState(3);
+const SelectBar = ({ percentage, setPercentage }: SelectBarProps) => {
   const barRef = React.useRef<HTMLDivElement>(null);
 
   const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
@@ -97,7 +96,7 @@ const Progress = styled.div`
   display: flex;
 `;
 
-const ProgressBar = styled.div<SelectBarProps>`
+const ProgressBar = styled.div<ColorProps>`
   width: 25%;
   height: 5px;
   display: flex;
