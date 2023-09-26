@@ -4,8 +4,9 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Dummy from '../../Dummy.json';
+import AucItemFormat from '../../components/AucItemFormat';
 
-type Item = {
+export type Item = {
   id?: number;
   img: string;
   brand: string;
@@ -37,22 +38,7 @@ const Items = ({ title, subtitle }: ClassProps) => {
       <Wrapper>
         <Slider {...settings}>
           {(Dummy.items as Item[]).map((item) => (
-            <ItemFormat key={item.id}>
-              <Img src={item.img}></Img>
-              <Brand>{item.brand}</Brand>
-              <Name>{item.name}</Name>
-              <Price>
-                <Text>최고가액</Text>
-                {/* Number 포맷팅 */}
-                <Value>{`${new Intl.NumberFormat().format(
-                  item.price,
-                )}원`}</Value>
-              </Price>
-              <TimeLimit>
-                <Text>남은 시간</Text>
-                <Value>{item.timelimit}</Value>
-              </TimeLimit>
-            </ItemFormat>
+            <AucItemFormat key={item.id} item={item} />
           ))}
         </Slider>
       </Wrapper>
@@ -96,6 +82,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
+  background-color: #fafafa;
+  border-top: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
   .slick-list {
     overflow: hidden !important;
     max-width: 100vw;
@@ -106,93 +95,16 @@ const Wrapper = styled.div`
     overflow: hidden !important;
     max-width: 100vw;
     width: 100% !important;
-    height: 425px;
+    height: 405px;
   }
   .slick-slider .slick-initialized {
     width: 100%;
   }
   .slick-slide .slick-active .slick-current {
-    width: 197px;
+    width: 180px !important;
   }
   .slick-track {
     left: 120px;
     width: 100%;
-  }
-`;
-
-const ItemFormat = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: fit-content !important;
-  height: fit-content !important;
-`;
-
-const Img = styled.img`
-  width: 197px;
-  height: 244px;
-`;
-
-const Brand = styled.p`
-  color: #000;
-  font-family: Apple SD Gothic Neo;
-  font-size: 16px;
-  font-weight: 700;
-  width: 197px;
-  margin-top: 8px;
-  margin-bottom: 0px;
-  margin-top: 8px;
-  margin-bottom: 10px;
-  text-align: left;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-`;
-
-const Name = styled.p`
-  color: #000;
-  font-family: Apple SD Gothic Neo;
-  font-size: 14px;
-  font-weight: 500;
-  width: 197px;
-  margin-top: 0px;
-  text-align: left;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-`;
-
-const Price = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 197px;
-  p {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    font-size: 14px;
-  }
-`;
-
-const Text = styled.p`
-  color: #000;
-  font-family: Apple SD Gothic Neo;
-  font-weight: 700;
-`;
-
-const Value = styled.p`
-  color: #000;
-  font-family: Apple SD Gothic Neo;
-  font-weight: 600;
-`;
-
-const TimeLimit = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 197px;
-  p {
-    margin-top: 4px;
-    margin-bottom: 0px;
-    font-size: 14px;
   }
 `;
