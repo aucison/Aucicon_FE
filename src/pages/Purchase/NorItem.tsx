@@ -150,7 +150,6 @@ const Button = styled.button`
   cursor: pointer;
   background-color: black;
   font-size: ${({ theme }) => theme.fontSizes.s};
-  font-family: 'Apple SD Gothic Neo';
   color: white;
   align-self: flex-end;
 `;
