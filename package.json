@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-oauth/google": "^0.11.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -46,7 +47,7 @@
     ]
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.198",
+    "@types/lodash": "^4.14.199",
     "@types/react-slick": "^0.23.10",
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@typescript-eslint/parser": "^6.2.0",

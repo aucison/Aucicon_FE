@@ -24,11 +24,17 @@ const Main = () => {
           onClick={() => onClickMenu(false)}
           style={common ? { fontWeight: 500 } : { fontWeight: 700 }}
         >
-          비경매
+          판매
         </h3>
       </SelectMenu>
       <div
-        style={{ width: '100%', height: '1px', backgroundColor: '#d3d3d3' }}
+        style={{
+          width: '86%',
+          height: '1.5px',
+          backgroundColor: '#333333',
+          margin: '0 auto',
+          marginBottom: '40px',
+        }}
       />
       <Items title="Hot Item" subtitle="인기 경매 상품" />
       <Items title="New Item" subtitle="새 경매 상품" />
