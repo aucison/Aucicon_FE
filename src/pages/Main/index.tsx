@@ -24,7 +24,7 @@ const Main = () => {
           onClick={() => onClickMenu(false)}
           style={common ? { fontWeight: 500 } : { fontWeight: 700 }}
         >
-          비경매
+          판매
         </h3>
       </SelectMenu>
       <div
