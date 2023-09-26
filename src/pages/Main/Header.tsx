@@ -30,7 +30,7 @@ const Header = () => {
         <NavItem to="/sell">Sell</NavItem>
         <NavItem to="/mypage/buy">My Page</NavItem>
         <NavItem to="/like">Like</NavItem>
-        <NavItem to="/like">Login</NavItem>
+        <NavItem to="/login">Login</NavItem>
       </NavSection>
     </HeaderWrapper>
   );

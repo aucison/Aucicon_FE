@@ -2,14 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Dummy from '../Dummy.json';
 import LikeBtn from './Main/assets/like_btn.svg';
-import { useNavigate } from 'react-router-dom';
 
 const Item = () => {
-  const navigate = useNavigate();
-  const onClickItem = (event: React.MouseEvent<HTMLDivElement>) => {
-    const id = event.currentTarget.getAttribute('data-id');
-    if (id) navigate(`/buy/${Number(id) + 1}`);
-  };
   return (
     <Section>
       <SearchKeyword>
@@ -19,7 +13,7 @@ const Item = () => {
       </SearchKeyword>
       <Wrapper>
         {Dummy.items.map((item) => (
-          <Container key={item.id} data-id={item.id} onClick={onClickItem}>
+          <Container key={item.id}>
             <Img src={item.img} />
             <Brand>{item.brand}</Brand>
             <Name>{item.name}</Name>

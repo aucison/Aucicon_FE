@@ -10,6 +10,9 @@ import Header from './pages/Main/Header';
 import Purchase from './pages/Purchase';
 import Market from './pages/Market';
 import MyPage from './pages/Mypage';
+//import ItemList from './pages/ItemList';
+import LikeList from './pages/Like/LikeList';
+import Login from './pages/Login/Login';
 
 function App() {
   return (
@@ -20,9 +23,11 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/mypage/:name" element={<MyPage />} />
+            <Route path="/mypage/:name/*" element={<MyPage />} />
             <Route path="/sell" element={<Sell />} />
             <Route path="/buy/:id" element={<Purchase />} />
+            <Route path="/like" element={<LikeList />} />
+            <Route path="/login" element={<Login />} />
             <Route path="*" element={<div>Not Found</div>} />
             <Route path="/market" element={<Market />} />
           </Routes>

@@ -3,8 +3,8 @@ import { styled } from 'styled-components';
 import { NavLink, useParams } from 'react-router-dom';
 import Buy from './Buy';
 import Sell from './Sell';
-import Address from './Address';
 import Info from './Info';
+import BuyDetail from './BuyDetail';
 
 const Format = () => {
   const { name } = useParams();
@@ -12,8 +12,8 @@ const Format = () => {
   const [page, setPage] = React.useState(name || 'buy'); // [현재 페이지, 페이지 변경 함수
   const pages = [
     { name: 'buy', content: <Buy /> },
+    { name: 'buyDetail', content: <BuyDetail /> },
     { name: 'sell', content: <Sell /> },
-    { name: 'address', content: <Address /> },
     { name: 'info', content: <Info /> },
   ];
 
@@ -29,7 +29,6 @@ const Format = () => {
         <Divider />
         <NavLink to="/mypage/buy">내 구매 관리</NavLink>
         <NavLink to="/mypage/sell">내 판매 관리</NavLink>
-        <NavLink to="/mypage/address">배송지 관리</NavLink>
         <NavLink to="/mypage/info">내 정보 관리</NavLink>
       </NavMenu>
       <Contents>{pages.find((page) => page.name === name)?.content}</Contents>
