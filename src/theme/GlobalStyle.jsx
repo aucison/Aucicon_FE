@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-family: "Apple SD Gothic Neo";
     line-height: 1.5;
+    margin: 0;
   }
   @font-face {
   font-family: 'Jost';
