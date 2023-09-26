@@ -23,13 +23,11 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/mypage/:name" element={<MyPage />} />
+            <Route path="/mypage/:name/*" element={<MyPage />} />
             <Route path="/sell" element={<Sell />} />
+            <Route path="/buy/:id" element={<Purchase />} />
             <Route path="/like" element={<LikeList />} />
             <Route path="/login" element={<Login />} />
-            {/* 추후 경매, 일반에 따른 페이지 라우팅 추가 */}
-            <Route path="/buy" element={<Purchase />} />
-            {/* 추후 경매, 일반 /제품번호에 따른 라우팅 추가 */}
             <Route path="*" element={<div>Not Found</div>} />
             <Route path="/market" element={<Market />} />
           </Routes>
